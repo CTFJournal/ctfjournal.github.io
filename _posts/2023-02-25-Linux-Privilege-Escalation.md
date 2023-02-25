@@ -151,15 +151,35 @@ Following the instructions we quickly get a root shell :)
 
 ![img17](/assets/images/linuxprivesc/img17.png)
 
+------------------------------------------------------------------------------
+
 
 
 
 ![img18](/assets/images/linuxprivesc/img18.png)
+
+
+
 ![img19](/assets/images/linuxprivesc/img19.png)
+
+
+
 ![img20](/assets/images/linuxprivesc/img20.png)
+
+
+
 ![img21](/assets/images/linuxprivesc/img21.png)
+
+
+
 ![img22](/assets/images/linuxprivesc/img22.png)
+
+
+
 ![img23](/assets/images/linuxprivesc/img23.png)
+
+
+
 ![img24](/assets/images/linuxprivesc/img24.png)
 ![img25](/assets/images/linuxprivesc/img25.png)
 
