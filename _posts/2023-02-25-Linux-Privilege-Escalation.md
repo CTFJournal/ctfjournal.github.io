@@ -130,13 +130,30 @@ Now we can switch user to *newroot* and use the password we have created earlier
 
 ------------------------------------------------------------------------------
 
+### Task6: Sudo - Shell Escape Sequences 
 
+**sudo -l** is a command used in Unix-based systems to list the permissions that a user has to perform administrative tasks using the sudo command. It helps users understand the extent of their administrative capabilities and ensures that they are only running authorized commands with elevated privileges. It is also useful for administrators to manage the permissions granted to users through the sudoers file.
 
+We can look through [GTFOBins](https://gtfobins.github.io) to find various methods for elevating privileges using binaries the user is allowed to run as root.
 
+Let's verify and see what are the programs the current user can run with elevated pivileges.
 
 ![img15](/assets/images/linuxprivesc/img15.png)
+
+It looks like we quite a few options. I picked the 1st binay in the list [iftop](https://gtfobins.github.io/gtfobins/iftop/#sudo). Looking at GTFObins we see *the binary is allowed to run as superuser by sudo, and may be used to access the file system, escalate or maintain privileged access* by executing ***sudo iftop*** and then *** ***!/bin/sh***
+
 ![img16](/assets/images/linuxprivesc/img16.png)
+
+Following the instructions we quickly get a root shell :) 
+
+
+
+
 ![img17](/assets/images/linuxprivesc/img17.png)
+
+
+
+
 ![img18](/assets/images/linuxprivesc/img18.png)
 ![img19](/assets/images/linuxprivesc/img19.png)
 ![img20](/assets/images/linuxprivesc/img20.png)
