@@ -1,6 +1,6 @@
-title: "Blog Title"
+title: "CTF Journal"
 author: "Blog Author"
-description: "Made with <b style=\"color: #f45;\">&lt;3</b>"
+description: "This blog is dedicated to sharing insights and various methods for solving challenges from platforms like TryHackMe, HackTheBox, OverTheWire and PicoCTF. Here you should expect to find detailed walkthroughs of CTF challenges, covering everything from the initial reconnaissance to the final exploit. style=\"color: #f45;\">&lt;3</b>"
 permalink: /:title/
 lang: "en"
 excerpt_separator: "\n\n\n"
