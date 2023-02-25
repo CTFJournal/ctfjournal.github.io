@@ -1,5 +1,5 @@
 title: "CTF Journal"
-author: "Blog Author"
+author: "Sergiu O"
 description: "This blog is dedicated to sharing insights and various methods for solving challenges from platforms like TryHackMe, HackTheBox, OverTheWire and PicoCTF. Here you should expect to find detailed walkthroughs of CTF challenges, covering everything from the initial reconnaissance to the final exploit."
 permalink: /:title/
 lang: "en"
