@@ -108,11 +108,32 @@ Save the changes & close the editor. Then try logging in as root and the  passwo
 
 ------------------------------------------------------------------------------
 
+### Task5: Weak File Permissions - Writable /etc/passwd 
+
+
+The /etc/passwd file contains a list of all the user accounts on the system, including usernames, user IDs, group IDs, home directories, and shell information.
+
+If the /etc/passwd file is made writeable, it would allow anyone with write access to modify the file, which can be a significant security risk. An attacker could potentially modify the file to grant themselves elevated privileges or create new user accounts with administrative access. We will learn how to do it in this task.
+
+We first check that the file is writable then we generate a password hash for *password123* using **openssl**
 
 
 ![img12](/assets/images/linuxprivesc/img12.png)
+
+I copied the entire root line from the beggining of the */etc/passwd* file and added it at the end of the file, replacing the root name with *newroot* and added password hash *UxiDZo1GyzcK.*
+
 ![img13](/assets/images/linuxprivesc/img13.png)
+
+Now we can switch user to *newroot* and use the password we have created earlier.
+
 ![img14](/assets/images/linuxprivesc/img14.png)
+
+------------------------------------------------------------------------------
+
+
+
+
+
 ![img15](/assets/images/linuxprivesc/img15.png)
 ![img16](/assets/images/linuxprivesc/img16.png)
 ![img17](/assets/images/linuxprivesc/img17.png)
