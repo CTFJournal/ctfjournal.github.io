@@ -14,6 +14,7 @@ This is my first blog post using Jekyll. It's super easy to use and looks great 
 Here's an example of how you can add an image to your blog post:
 
 ![My Image](/assets/images/my-image.png)
-_My image caption._
+
+![My Image](/assets/images/my-image2.png)
 
 That's it for now. Thanks for reading!
