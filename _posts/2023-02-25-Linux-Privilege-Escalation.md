@@ -78,16 +78,38 @@ Looking at the file contents we can see the root hashed password in between the 
 ![img7](/assets/images/linuxprivesc/img7.png)
 
 I copied the hash and created a *hash.txt* file on my local machine then used **john** to crack the hash. You can also explore online tools to determine out the hashing algorythm. I used **hashid** utility.
+It took a few seconds to crack the password using **john**.
 
 ![img8](/assets/images/linuxprivesc/img8.png)
 
 
+We can now log in as root, executing ***su root*** and providing the password discovered at the previous step.
 
 ![img9](/assets/images/linuxprivesc/img9.png)
 
 
+------------------------------------------------------------------------------
+
+### Task4: Weak File Permissions - Writable /etc/shadow 
+
+As we have learned in the previous task, */etc/shadow* file contains user password hashes and is usually readable only by the root user. Allowing anyone to read the file, will potentially cause having the password cracked as there are multiple tools that can be used to perform hash cracking (**john, hashcat**, or the web)
+
+In this task, we can even write to the */etc/shadow*, meaning that we can create a password hash ourselves and replace it with the root hash from the file, which will allow us to login as root using the new password.
+
+Longlisting the */etc/shadow* file we can see that it is writable by *others*.  So, we generate the hash for the password *password123*.
+
 ![img10](/assets/images/linuxprivesc/img10.png)
+
+Now we can use a text editor, **nano** or **vim** to edit the */etc/shadow* file and replace the root password hash with the hash we have generated for *password123*. 
+
 ![img11](/assets/images/linuxprivesc/img11.png)
+
+Save the changes & close the editor. Then try logging in as root and the  password you set. You should have a root shell and you've successfuly escalated the privileges.
+
+------------------------------------------------------------------------------
+
+
+
 ![img12](/assets/images/linuxprivesc/img12.png)
 ![img13](/assets/images/linuxprivesc/img13.png)
 ![img14](/assets/images/linuxprivesc/img14.png)
