@@ -9,8 +9,11 @@ tags: [jekyll, tutorial, example]
 
 This is my first blog post using Jekyll. It's super easy to use and looks great out of the box!
 
-## Getting started
+## Adding an image
 
-To get started, you can fork the [Jekyll repository](https://github.com/jekyll/jekyll) on GitHub and customize it to your liking.
+Here's an example of how you can add an image to your blog post:
+
+![My Image](/assets/images/my-image.png)
+_My image caption._
 
 That's it for now. Thanks for reading!
