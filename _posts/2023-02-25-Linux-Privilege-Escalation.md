@@ -6,7 +6,7 @@ title: "Linux Privilege Escalation"
 
 
 
-***This post will be containing the entire walkthrough of the Linux PrivEsc room on [TryHackMe](https://www.tryhackme.com).***
+***This post will be containing the entire walkthrough of the Linux PrivEsc room on [TryHackMe](https://www.tryhackme.com/linuxprivesc).***
 
 ----------------------------------------------------
 
