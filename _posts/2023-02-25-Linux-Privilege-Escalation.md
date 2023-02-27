@@ -231,9 +231,10 @@ Let us first create the payload for the reverse shell using **msfvenom**. Make s
 
 Then i spawned a http server on the local **Kali** machine using python and copied it to the Tryhackme machine using **wget**.
 
-***Local Machine***
+***Local Machine***        
 ![img29](/assets/images/linuxprivesc/img29.png)
-***Tryhackme machine***
+
+***Tryhackme machine***         
 ![img30](/assets/images/linuxprivesc/img30.png)
 
 Created all the files in **/home/user** following the instructions  and started a **netcat** listener on **kali**
