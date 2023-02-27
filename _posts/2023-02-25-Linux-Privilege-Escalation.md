@@ -224,11 +224,25 @@ On [GTFOBins](https://gtfobins.github.io/gtfobins/tar/) we see that **tar** has 
 
 ![img27](/assets/images/linuxprivesc/img27.png)
 
-Let us first create the payload for the reverse shell using **msfvenom**. Make sure to replace **LHOST** IP with your **Kali** machine's IP address
+Let us first create the payload for the reverse shell using **msfvenom**. Make sure to replace **LHOST** IP with your **Kali** machine's IP address.
+****Msfvenom** *is not installed on Tryhackme machine, hence you'll have to generate the shell on your kali machine and then copy it*.
 
 ![img28](/assets/images/linuxprivesc/img28.png)
+
+Then i spawned a http server on the local **Kali** machine using python and copied it to the Tryhackme machine using **wget**.
+
+***Local Machine***
 ![img29](/assets/images/linuxprivesc/img29.png)
+***Tryhackme machine***
 ![img30](/assets/images/linuxprivesc/img30.png)
+
+Created all the files in **/home/user** following the instructions  and started a **netcat** listener on **kali**
+
 ![img31](/assets/images/linuxprivesc/img31.png)
+
+In about a minute, we get a connection and we're root
+
 ![img32](/assets/images/linuxprivesc/img32.png)
+
+-------------------------------------------------------------------------------
 
