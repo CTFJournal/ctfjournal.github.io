@@ -151,26 +151,39 @@ Following the instructions we quickly get a root shell :)
 
 ![img17](/assets/images/linuxprivesc/img17.png)
 
-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
+### Task7: Sudo - Environment Variables 
 
+This section is explaining how can we use "sudo" to modify the environment variables that the programs run with. Environment variables are pieces of information that programs use to find things like libraries they need to run. By changing these variables, it's possible to run programs in a way that might not normally be allowed.
 
+We have two examples of modifying environment variables using "sudo". Following the examples, we will modifiy the LD_PRELOAD and LD_LIBRARY_PATH variables, which control how shared libraries are loaded when programs run. Will compile a new shared library, then use "sudo" to run a program with that library preloaded.
+
+For the first example i chose **nano** and spawned a root shell using the comands provided.
 
 ![img18](/assets/images/linuxprivesc/img18.png)
 
-
+The second task is also easy to accomplish, since we have the commands available. 
 
 ![img19](/assets/images/linuxprivesc/img19.png)
 
+-------------------------------------------------------------------------------
 
+### Task8: Cron Jobs - File Permissions 
+
+We'll learn some intersting stuff in this task, specifically how to expoit crontab. Crontab allows users to schedule automated tasks to run at specified times. It can be exploited if the crontab file is not properly secured or if the tasks it runs are vulnerable to attacks, allowing to execute malicious code or gain unauthorized access to the system.
+
+Checking the **crontab** we see there's a cronjob being run periodicaly as **root** and the source is the file *overwrite.sh*. If we look at the file permissions, we see it allows **others** to write to it. 
+So, we can replace the script content with our own code which will create a reverse tcp connection.
 
 ![img20](/assets/images/linuxprivesc/img20.png)
 
+Let's replace the contents of the *overwrite.sh* file. Make sure you're changing the IP address to that of your Kali box.
 
 
 ![img21](/assets/images/linuxprivesc/img21.png)
 
-
+Save the changes and close the text editor. Start a netcat listener on your local **Kali** machine and set the port to match the one from the script. Wait for about a minute and once the script is executed via crontab, you will get a reverse shell via netcat, as root.
 
 ![img22](/assets/images/linuxprivesc/img22.png)
 
