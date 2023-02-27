@@ -247,3 +247,61 @@ In about a minute, we get a connection and we're root
 
 -------------------------------------------------------------------------------
 
+### Task11: SUID / SGID Executables - Known Exploits
+
+Setuid (set user ID) and setgid (set group ID) are Unix/Linux file permissions that allow users to execute a program with the permissions of the file owner or group owner, respectively.
+
+When a file is marked with the setuid permission, anyone who executes the file gains the same permissions as the file owner. This is often used to allow non-root users to perform tasks that require root privileges, such as changing passwords.
+
+Similarly, when a file is marked with the setgid permission, anyone who executes the file gains the same group permissions as the file's group owner. This is often used to allow multiple users to work on the same files or directories with shared permissions, such as in a collaborative project.
+
+
+The command we will run in this task searches for all files in the root directory ("/") that have the setuid or setgid bit set, and then lists them with their permissions using the "ls -l" command. The "2> /dev/null" part of the command redirects error messages to /dev/null so that they are not displayed.
+
+Here is a breakdown of the command:
+
+    "find" is a command used to search for files and directories in a directory hierarchy.
+    "/" specifies the root directory as the starting point for the search.
+    "-type f" specifies that only files should be included in the search.
+    "-a" is a logical AND operator that combines the two conditions that follow.
+    ""and"" and ""and"" are used to group the conditions that follow, so that they are treated as a single unit.
+    "-perm" specifies that the permissions of the files should be checked.
+    "-u+s" specifies that the setuid bit should be set for the owner of the file.
+    "-o" is a logical OR operator that combines the two conditions that follow.
+    "-perm" specifies that the permissions of the files should be checked.
+    "-g+s" specifies that the setgid bit should be set for the group that owns the file.
+    "-exec" specifies that the "ls -l" command should be executed on the files that match the conditions.
+    "{}" is a placeholder that is replaced by the names of the files that match the conditions.
+    ";" specifies the end of the command that is executed on each file.
+    "2> /dev/null" redirects any error messages to /dev/null, so that they are not displayed.
+
+
+![img33](/assets/images/linuxprivesc/img33.png)
+
+
+
+![img34](/assets/images/linuxprivesc/img34.png)
+
+
+
+![img35](/assets/images/linuxprivesc/img35.png)
+
+
+
+![img36](/assets/images/linuxprivesc/img36.png)
+
+
+
+![img37](/assets/images/linuxprivesc/img37.png)
+
+
+
+![img38](/assets/images/linuxprivesc/img38.png)
+
+
+
+![img39](/assets/images/linuxprivesc/img39.png)
+
+
+
+![img40](/assets/images/linuxprivesc/img40.png)
