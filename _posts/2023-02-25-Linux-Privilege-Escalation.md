@@ -187,12 +187,48 @@ Save the changes and close the text editor. Start a netcat listener on your loca
 
 ![img22](/assets/images/linuxprivesc/img22.png)
 
+-------------------------------------------------------------------------------
 
+### Task9: Cron Jobs - PATH Environment Variable 
+
+
+To break this down in the most simple terms, the task will be consisting of creating a script that's being executed as root via crontab.  The script will  copy the ***/bin/bash*** binary  to ***/tmp*** folder and rename it ***rootbash***
+
+Checking the **crontab** to confirm we have ***/home/user/*** in the **PATH** and also we can see there's an entry called *overwrite.sh* being executed every minute.
 
 ![img23](/assets/images/linuxprivesc/img23.png)
 
-
+Creating the script and making it executable with ***chmod +x overwrite.sh*** command.
 
 ![img24](/assets/images/linuxprivesc/img24.png)
+
+We wait for about a minute, check ***/tmp*** directory to see if the *rootbash* is there and execute it to get a root shell.
 ![img25](/assets/images/linuxprivesc/img25.png)
+
+-------------------------------------------------------------------------------
+
+### Task10: Cron Jobs - Wildcards 
+
+This task moves the focus on the other cron job script *compress.sh*. Taking  a look at its content we can the command "tar czf /tmp/backup.tar.gz *" being executed. This creates a compressed tar archive of all the files and directories in the current working directory and saves it to the file "/tmp/backup.tar.gz". Here is what each option in the command does:
+
+    "tar" is a program used to create and manipulate tar archives.
+    "c" option tells tar to create a new archive.
+    "z" option tells tar to compress the archive using gzip.
+    "f" option specifies the filename of the archive to create.
+    "/tmp/backup.tar.gz" is the filename and path where the compressed tar archive will be saved.
+    "*" represents all files and directories in the current working directory that will be included in the archive.
+
+![img26](/assets/images/linuxprivesc/img26.png)
+
+On [GTFOBins](https://gtfobins.github.io/gtfobins/tar/) we see that **tar** has command line options that let us run other commands, so we wil use this to execute a reverse shell.
+
+![img27](/assets/images/linuxprivesc/img27.png)
+
+Let us first create the payload for the reverse shell using **msfvenom**. Make sure to replace **LHOST** IP with your **Kali** machine's IP address
+
+![img28](/assets/images/linuxprivesc/img28.png)
+![img29](/assets/images/linuxprivesc/img29.png)
+![img30](/assets/images/linuxprivesc/img30.png)
+![img31](/assets/images/linuxprivesc/img31.png)
+![img32](/assets/images/linuxprivesc/img32.png)
 
