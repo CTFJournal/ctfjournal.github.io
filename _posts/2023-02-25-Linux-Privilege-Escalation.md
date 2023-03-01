@@ -424,11 +424,35 @@ On the **Debian** machine
 - execute the file to gain a root shell
 - the answer for disabling the root squash can be found in the **/etc/exports** file
 
+---------------------------------------------------------------------------
+
+### Task20: Kernel Exploits
+
+This one is going to be about kernel exploits. These exploits can leave a system unstable, and should only be used as a last resort. To identify potential kernel exploits on a Linux system, the Linux Exploit Suggester 2 tool can be used. 
+
+Running the tool, we see the machine is vulnerable to **Dirty COW** exploit **CVE-2016-5195**
+
 ![img47](/assets/images/linuxprivesc/img47.png)
 
+ This exploit replaces the SUID file /usr/bin/passwd with one that spawns a shell, and a backup of the original file is made at /tmp/bak. To use the exploit, the code should be compiled using gcc and run, which may take several minutes to complete. Once the exploit completes, run /usr/bin/passwd to gain a root shell.
 
 
 
 ![img48](/assets/images/linuxprivesc/img48.png)
-![img49](/assets/images/linuxprivesc/img49.png)
-![img50](/assets/images/linuxprivesc/img50.png)
+
+That's it, we have root access.
+
+
+---------------------------------------------------------------------------
+
+### Task21: Privilege Escalation Scripts
+
+This section points out to some tools for automatic scanning of the linux systems to dicover vulnerabilities and privilege escalation vectors. I will add the links and a short description below.
+
+
+[LinEnum](https://github.com/rebootuser/LinEnum) is a bash script that helps you enumerate and identify potential vulnerabilities on Linux systems. It performs a comprehensive scan of the system and provides information on the OS version, running processes, network configuration, file system permissions, and more.
+
+
+[LinPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS) (Linux Privilege Escalation Awesome Script) is a privilege escalation tool for Linux systems. It automates the process of searching for and exploiting common misconfigurations and vulnerabilities that can be used to escalate privileges on a target system.
+
+[LSE](https://github.com/diego-treitos/linux-smart-enumeration) (Linux Smart Enumeration) is a script that helps you perform a quick and thorough reconnaissance of a Linux system. It can be used to gather information about the system's hardware and software configuration, network settings, running processes, and more. LSE is useful for identifying potential vulnerabilities and for troubleshooting issues on Linux systems.
