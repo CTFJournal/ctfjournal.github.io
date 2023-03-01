@@ -324,8 +324,111 @@ Below are the commands executed as per instructions, to escalate privileges.
 For task 14, the /usr/local/bin/suid-env2 executable is the same as /usr/local/bin/suid-env, but it uses the absolute path of the service executable to start the apache2 webserver. Older **bash** versions prior to 4.2-048 allow users to define shell functions with names that resemble file paths, which can be exported and used instead of the actual executable at that file path. To exploit this, a Bash function with the name "/usr/sbin/service" is created and exported, which executes a new Bash shell with preserved permissions. Finally, the suid-env2 executable is run to gain a root shell.
 
 All steps are below:
+
 ![img39](/assets/images/linuxprivesc/img39.png)
 
+---------------------------------------------------------------------------
 
+### Task15: SUID / SGID Executables - Abusing Shell Features (#2)
+
+Task 15 will consist of running a set of instructions for executing a command that enables debugging in Bash and creates a SUID version of /bin/bash, which can be used to gain root privileges.
+
+When Bash is in debugging mode, it displays an extra prompt for debugging statements using the environment variable PS4. The given command sets the PS4 variable to an embedded command that creates a SUID version of /bin/bash by copying it to /tmp/rootbash and setting the setuid bit on the copied file using chmod +xs.
+
+After running the command, the /tmp/rootbash executable can be used with the -p option to gain a shell running with root privileges.
 
 ![img40](/assets/images/linuxprivesc/img40.png)
+
+---------------------------------------------------------------------------
+
+### Task16: Passwords & Keys - History Files
+
+Here we'll learn how to view the contents of the hidden history files in a user's home directory, with the purpose of identifying if the user has accidentally typed their password on the command line.
+
+When a user types a command in a terminal, the shell stores it in a history file. If a user accidentally types their password on the command line instead of a password prompt, it may get recorded in the history file, making it visible to anyone with access to the file.
+
+The **"cat ~/.*history | less"*** command displays the contents of all hidden history files in the user's home directory, allowing the user to scroll through them using the "less" pager.
+
+    The "~" symbol is a shorthand for the user's home directory.
+    The ".*history" part matches all files that end with "history" and start with a "." character (which indicates a hidden file).
+    The command "cat ~/.*history" concatenates and displays the contents of all hidden history files in the user's home directory.
+    The "|" symbol is a pipe, which is used to pass the output of the "cat" command to the "less" command.
+    The "less" command is a pager that allows the user to scroll through the output one page at a time.
+   Revealing the history, we observe that the user has tried to connect to a MySQL server at some point, using the "root" username and a password submitted via the command line. It's important to note that the password was submitted without a space between the "-p" option and the password, which is a common mistake that could potentially expose the password in the history file.
+
+
+![img41](/assets/images/linuxprivesc/img41.png)
+
+We now have the root credentials and can escalate privileges. Just type **su root** in the terminal & provide the password.
+
+---------------------------------------------------------------------------
+
+### Task17: Passwords & Keys - Config Files
+
+This task is about identifying and retrieving the root user's credentials from a configuration file that may contain passwords in plaintext or other reversible formats.
+
+It's important to note that storing passwords in plaintext or other reversible formats in configuration files is a security risk, as it allows anyone with access to the file to retrieve the passwords. It's generally recommended to store passwords in encrypted or hashed formats to protect them from unauthorized access.
+
+Looking in the user's home directory we see the **openvpn** config file. When we read its content, it looks like the file contains a reference to another file called *auth.txt*, which most likely contains the auth creds.
+Indeed, we discover the root credentials in the content of the  *auth.txt* file located at */etc/openvpn/* 
+
+![img42](/assets/images/linuxprivesc/img42.png)
+
+---------------------------------------------------------------------------
+
+### Task18: Passwords & Keys - SSH Keys
+
+Now let's learn how we can identify and retrieve a private SSH key that has been stored in an insecure location, where typically we should not have read access. 
+
+Let's first look for hidden files and directories in the root directory of the system using the "ls -la /" command. This will reveal any files or directories that have been marked as hidden or have restricted access permissions.
+
+We see a hidden directory called ".ssh" - Here is where the ssh keys are stored and normaly a regular user should not be able to read the contents of this location.
+
+We can copy the content of the "root_key" file to our local machine, and set the correct file permissions using the "chmod 600 root_key" command. This ensures that only the owner of the file (the user who copied it) can read or write to it, and prevents unauthorized access to the private SSH key.
+
+Then we can connect via ssh, specifying the private key file, instead of a password.
+
+Let's read the contents of the root's ssh private key
+
+![img43](/assets/images/linuxprivesc/img43.png)
+
+Now copy the key content, switch to your local kali machine, create a new file and paste the copied content. Change file permission and connect. Add **-i** to connect with key file instead of password.
+
+![img44](/assets/images/linuxprivesc/img44.png)
+
+---------------------------------------------------------------------------
+
+### Task19: NFS
+
+This task will demonstrate how files created via NFS (Network File System) inherit the remote user's ID. In other words, if a user creates a file over NFS, the file will have the same user ID (UID) as the remote user who created it. Read more on [Wikipedia](https://en.wikipedia.org/wiki/Unix_security#Root_squash) about root squash.
+Let's mount an NFS share from the Debian VM onto our Kali box and create a payload using msfvenom. 
+**Note**: All tasks on the kali machine should be performed while we're logged in as **root**
+
+
+
+The payload is saved to the mounted share and set to be executable with SUID permission.
+
+On your **Kali** machine
+- switch to your root user
+- create a mount point and mount the debian machine /tmp
+- generate a payload using msfvenom and save it to the mounted share
+- make the file executable and set the SUID permission 
+
+![img45](/assets/images/linuxprivesc/img45.png)
+
+
+![img46](/assets/images/linuxprivesc/img46.png)
+
+On the **Debian** machine
+
+- execute the file to gain a root shell
+- the answer for disabling the root squash can be found in the **/etc/exports** file
+
+![img47](/assets/images/linuxprivesc/img47.png)
+
+
+
+
+![img48](/assets/images/linuxprivesc/img48.png)
+![img49](/assets/images/linuxprivesc/img49.png)
+![img50](/assets/images/linuxprivesc/img50.png)
