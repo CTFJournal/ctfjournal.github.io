@@ -276,30 +276,54 @@ Here is a breakdown of the command:
     "2> /dev/null" redirects any error messages to /dev/null, so that they are not displayed.
 
 
+Let's run the command for locating all files that have the **suid** or **sgid** bit set.  The results bring up multiple files with **suid**, among which there's our file of interest located at */usr/sbin/exim-4.84-3*
+
 ![img33](/assets/images/linuxprivesc/img33.png)
 
-
+Performing a **searchsploit** lookup, we notice this version has a *Local Privilege Escalation* vulnerability. *Exim is a popular mail transfer agent (MTA), used on Unix-like operating systems, including Linux and macOS. It is responsible for sending, receiving, and delivering email messages between mail servers on the internet.*
 
 ![img34](/assets/images/linuxprivesc/img34.png)
 
-
+For more details we can check [NVD](https://nvd.nist.gov/vuln/detail/CVE-2016-1531) for **CVE-2016-1531**. Exploiting this vulnerability we should be able to gain root privileges on the machine.
 
 ![img35](/assets/images/linuxprivesc/img35.png)
 
-
+The exploit is already located at */home/user/tools/suid/exim/cve-2016-1531.sh* and we can execute it. You can also find the exploit on your local kali machine(if you have searchspoit installed) at */usr/share/exploitdb/exploits/linux/local/39535.sh*, or on [Expoit-DB](https://www.exploit-db.com/exploits/39535)
 
 ![img36](/assets/images/linuxprivesc/img36.png)
 
+Running the exploit, we do get a shell escalating privileges to root.
 
+---------------------------------------------------------------------------
+
+### Task12: SUID / SGID Executables - Shared Object Injection
+
+Shared Object Injection (SOI) is a technique used to exploit vulnerabilities in programs that use dynamic linking of shared objects (libraries) in Unix-like systems. SOI is often used in conjunction with SUID/SGID files to escalate privileges and gain unauthorized access to system resources, by injecting malicious code into a shared library and trick an SUID/SGID executable into running that code with elevated privileges.
+
+In this task we have a binary located */usr/local/bin/suid-so* which, when executed, it tries to load the */home/user/.config/libcalc.so* shared object within our home directory. The directory/file *.config/libcalc.so* does not exist and we'll have to create them. Once the hidden folder */.config* created, we can run the command to compile the file located at */home/user/tools/suid/libcalc.c* and output as *libcalc.so* to */home/user/.config*
+Then execute the **suid-so** binary and you should get a root shell
 
 ![img37](/assets/images/linuxprivesc/img37.png)
 
+---------------------------------------------------------------------------
 
+### Task13: SUID / SGID Executables - Environment Variables
+
+We already know that SUID/SGID executables are programs that run with elevated privileges on Unix-like systems. Environment variables can be used by attackers to exploit vulnerabilities in these executables and escalate privileges further. For example an attacker sets the PATH environment variable to inherit the user's PATH, and then attempts to execute programs without specifying an absolute path. By doing so, the attacker may be able to execute a malicious program with elevated privileges.
+
+In the given example, the SUID/SGID executable /usr/local/bin/suid-env can be exploited by inheriting the user's PATH environment variable and attempting to execute programs without an absolute path. The exploit involves compiling a new executable and prepending the current directory to the PATH variable before running the suid-env executable to gain a root shell.
+
+Below are the commands executed as per instructions, to escalate privileges.
 
 ![img38](/assets/images/linuxprivesc/img38.png)
 
+---------------------------------------------------------------------------
 
+### Task14: SUID / SGID Executables - Abusing Shell Features (#1)
 
+For task 14, the /usr/local/bin/suid-env2 executable is the same as /usr/local/bin/suid-env, but it uses the absolute path of the service executable to start the apache2 webserver. Older **bash** versions prior to 4.2-048 allow users to define shell functions with names that resemble file paths, which can be exported and used instead of the actual executable at that file path. To exploit this, a Bash function with the name "/usr/sbin/service" is created and exported, which executes a new Bash shell with preserved permissions. Finally, the suid-env2 executable is run to gain a root shell.
+
+All steps are below:
 ![img39](/assets/images/linuxprivesc/img39.png)
 
 
