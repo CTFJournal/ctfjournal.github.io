@@ -6,7 +6,7 @@ title: "Linux Privilege Escalation"
 
 
 
-***This post will be containing the entire walkthrough of the Linux PrivEsc room on [TryHackMe](https://www.tryhackme.com/room/linuxprivesc).***
+***This post contains the entire walkthrough of the Linux PrivEsc room on [TryHackMe](https://www.tryhackme.com/room/linuxprivesc).***
 
 ----------------------------------------------------
 
@@ -447,7 +447,7 @@ That's it, we have root access.
 
 ### Task21: Privilege Escalation Scripts
 
-This section points out to some tools for automatic scanning of the linux systems to dicover vulnerabilities and privilege escalation vectors. I will add the links and a short description below.
+This section points out to some tools for automatic scanning of the linux systems to discover vulnerabilities and privilege escalation vectors. I will add the links and a short description below.
 
 
 [LinEnum](https://github.com/rebootuser/LinEnum) is a bash script that helps you enumerate and identify potential vulnerabilities on Linux systems. It performs a comprehensive scan of the system and provides information on the OS version, running processes, network configuration, file system permissions, and more.
