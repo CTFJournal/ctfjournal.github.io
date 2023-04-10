@@ -31,7 +31,7 @@ title: "Linux Privilege Escalation"
 
 
 ### Task1: Deploy the Vulnerable Debian VM 
-   Nothing difficult in to do in this task, just click "Start Machine" and connect to it via ssh. Make sure you are connected to **tryhackme vpn**
+   Nothing difficult to do in this task, just click "Start Machine" and connect to it via ssh. Make sure you are connected to **tryhackme vpn**
 
    Use the following command to connect to the deployed machine: ***ssh tryhackme@MACHINE_IP*** and enter the password provided in the task description when prompted. You should now have access to the deployed machine's terminal.
 
