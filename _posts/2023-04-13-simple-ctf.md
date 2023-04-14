@@ -86,6 +86,8 @@ The ssh login for **mitch:secret** is successful and we also have the user flag 
 
 #### Q8: Is there any other user in the home directory?
 
+Yep! We also have **sunbath**.
+
 ![img7](/assets/images/easyctf/img7.png)
 
 #### Q9: What can you leverage to spawn a privileged shell?
