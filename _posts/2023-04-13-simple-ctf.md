@@ -82,7 +82,7 @@ With the found credentials let's attempt logging in via **SSH** on port **2222**
 
 ![img6](/assets/images/easyctf/img6.png)
 
-The ssh login for **mitch:secret** is successful and we also have the user flag located at */home/mitch/user.txt*, which is the answer for question.
+The ssh login for **mitch:secret** is successful and we also have the user flag located at */home/mitch/user.txt*, which is the answer for question 7.
 
 #### Q8: Is there any other user in the home directory?
 
