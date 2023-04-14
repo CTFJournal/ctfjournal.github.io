@@ -104,4 +104,4 @@ And having the root shell we can now read the content of the *root.txt* file loc
 
 ![img9](/assets/images/easyctf/img9.png)
 
-Whith this, the room is now complete! 
+With this, the room is now complete! 
