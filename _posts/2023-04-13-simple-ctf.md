@@ -65,11 +65,43 @@ Looking in [ExploitDB](https://www.exploit-db.com/) we find a higher version vul
 
 #### Q5: What's the password?
 
+The **python** exploit for **CVE-2019-9053** from [ExploitDB](https://www.exploit-db.com/) did not work for me, it seems to need some additional tweaking/adjustments. I found the working version of the exploit on [Github](https://raw.githubusercontent.com/e-renna/CVE-2019-9053/master/exploit.py) and executed it against the machine using the following command:
 
+    python3 exploit.py -u http://$IP/simple --crack -w /usr/share/wordlists/seclists/Passwords/Common-Credentials/best110.txt
 
+Below you'll see the exploit was successfully executed and password found.
+
+ 
 ![img5](/assets/images/easyctf/img5.png)
+
+#### Q6: Where can you login with the details obtained?
+
+With the found credentials let's attempt logging in via **SSH** on port **2222**
+
+
+
 ![img6](/assets/images/easyctf/img6.png)
+
+The ssh login for **mitch:secret** is successful and we also have the user flag located at */home/mitch/user.txt*, which is the answer for question.
+
+#### Q8: Is there any other user in the home directory?
+
 ![img7](/assets/images/easyctf/img7.png)
+
+#### Q9: What can you leverage to spawn a privileged shell?
+
+It looks like **mitch** can run **vim** with root privileges, which makes it simple to escalate privileges by executing **/bin/sh** via **vim**.
+
 ![img8](/assets/images/easyctf/img8.png)
-![img9](/assets/images/easyctf/img9.png)
+
+This privilege escalation technique and many more can be found at [GTFOBins](https://gtfobins.github.io/gtfobins/vim/#sudo)
+
 ![img10](/assets/images/easyctf/img10.png)
+
+#### Q10: What’s the root flag?
+
+And having the root shell we can now read the content of the *root.txt* file located in the */root* directory.
+
+![img9](/assets/images/easyctf/img9.png)
+
+Whith this, the room is now complete! 
