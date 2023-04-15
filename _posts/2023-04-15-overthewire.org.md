@@ -132,10 +132,14 @@ The find command will look as follows: **find / -user bandit7 -group bandit6 -si
 
 The password for the next level is stored in the file data.txt next to the word **millionth**
 
+We can find it either using **cat** or **strings** + **grep**, but this is not the only way to do it, there are many other methods.
 
-We can find it either using **cat** or **strings** + **grep**. Note this is not the only way to do it, there are multiple other methods.
+
+
 
 ![img9](/assets/images/bandit_overthewire/img9.png)
+
+-----------
 
 
 ![img10](/assets/images/bandit_overthewire/img10.png)
