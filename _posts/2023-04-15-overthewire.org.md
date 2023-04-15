@@ -26,7 +26,7 @@ title: "OverTheWire Wargames"
 
 ----------
 
-#### Bandit Level 0
+### Bandit Level 0
 
 Our objective for this level is to log in to the game using SSH. To establish a connection, we need to connect to the host "bandit.labs.overthewire.org" on port 2220. We should use the username "bandit0" and password "bandit0".
 
@@ -40,7 +40,7 @@ In the home directory, check the contents of the README file, it should contain 
 
 ----------
 
-#### Bandit Level 1
+### Bandit Level 1
 
 After loging to level 1, we need the password for level 2 which is stored in a file called **"-"(dash)** located in the home directory. To be able to read a file with such name we need to provide either the current directory path **./-** or the absolute path to the file **/home/bandit1/-**, otherwise the **-** will be considered as an option for the **cat** command and we won't get anything.
 
@@ -53,7 +53,7 @@ After loging to level 1, we need the password for level 2 which is stored in a f
 
 ------------
 
-#### Bandit Level 2
+### Bandit Level 2
 
 Level 2 → Level 3 task is to find the password in a file which has spaces in it's name. To read the contents of such file we can use the **" \ "** before each space, or double **TAB** to autocomplete.
 
@@ -61,7 +61,7 @@ Level 2 → Level 3 task is to find the password in a file which has spaces in i
 
 --------
 
-#### Bandit Level 3
+### Bandit Level 3
 
 Now that we know the password for level 3, we can work on finding the one for the next level, which is stored in a hidden file in the **inhere** directory. To list the hidden files in a folder use the **ls -la** command.
 
@@ -69,7 +69,7 @@ Now that we know the password for level 3, we can work on finding the one for th
 
 -------
 
-#### Bandit Level 4
+### Bandit Level 4
 
 We know that the password for the next level is stored in the only human-readable file in the **inhere** directory. To find out the content type of a file, we can use the **file** command. Keep in mind the filenames in the **inhere** directory start with a dash **-** so you need to use relative/absolute path to the files, when executing the command.
 
@@ -80,7 +80,7 @@ From the command output we see that the only file containing ASCII text is **-fi
 
 
 --------
-#### Bandit Level 5
+### Bandit Level 5
 
 
 For the next level, the password is stored in a file somewhere under the inhere directory and has all of the following properties:
@@ -127,10 +127,13 @@ The find command will look as follows: **find / -user bandit7 -group bandit6 -si
 
 ---------
 
-#### Bandit Level 6
+### Bandit Level 6
 
 
+The password for the next level is stored in the file data.txt next to the word **millionth**
 
+
+We can find it either using **cat** or **strings** + **grep**. Note this is not the only way to do it, there are multiple other methods.
 
 ![img9](/assets/images/bandit_overthewire/img9.png)
 
