@@ -21,14 +21,30 @@ title: "OverTheWire Wargames"
 
 
 
+
 [OverTheWire](https://overthewire.org/wargames/) is a website that provides a series of challenges aimed at improving the security skills through practice. The challenges are categorized into different levels, each with a specific focus and difficulty, covering various aspects of hacking and cybersecurity, such as cryptography, web exploitation, reverse engineering, and more.
 
-##### Bandit Level 0
+#### Bandit Level 0
 
 Our objective for this level is to log in to the game using SSH. To establish a connection, we need to connect to the host "bandit.labs.overthewire.org" on port 2220. We should use the username "bandit0" and password "bandit0".
 
 
 
+![img1](/assets/images/bandit_overthewire/img1.png)
 
+
+
+![img2](/assets/images/bandit_overthewire/img2.png)
+
+
+
+![img3](/assets/images/bandit_overthewire/img3.png)
+![img4](/assets/images/bandit_overthewire/img5.png)
+![img6](/assets/images/bandit_overthewire/img4.png)
+![img5](/assets/images/bandit_overthewire/img6.png)
+![img7](/assets/images/bandit_overthewire/img7.png)
+![img8](/assets/images/bandit_overthewire/img8.png)
+![img9](/assets/images/bandit_overthewire/img9.png)
+![img10](/assets/images/bandit_overthewire/img10.png)
 
 
