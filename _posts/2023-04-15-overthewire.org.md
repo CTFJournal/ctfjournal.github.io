@@ -102,10 +102,39 @@ So, to return a list of all readable files in the current directory and its subd
 ![img7](/assets/images/bandit_overthewire/img7.png)
 
 
+-------
+
+For level 7, the password is stored somewhere on the server and has all of the following properties:
+
+    owned by user bandit7
+    owned by group bandit6
+    33 bytes in size
+
+The find command will look as follows: **find / -user bandit7 -group bandit6 -size 33c 2>/dev/null**
+
+    Command: find - used to search for files and directories.
+    Starting point: / - the root directory, from where the search starts.
+    User: bandit7 - specifies the owner of the files to be searched for.
+    Group: bandit6 - specifies the group of the files to be searched for.
+    Size: 33c - specifies the size of the files to be searched for.
+    2>/dev/null redirects error messages to a black hole, i.e., discards them and prevents them from being displayed on the terminal.
+
+
 
 
 ![img8](/assets/images/bandit_overthewire/img8.png)
+
+
+---------
+
+#### Bandit Level 6
+
+
+
+
 ![img9](/assets/images/bandit_overthewire/img9.png)
+
+
 ![img10](/assets/images/bandit_overthewire/img10.png)
 
 
