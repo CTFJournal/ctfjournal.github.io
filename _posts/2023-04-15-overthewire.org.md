@@ -32,13 +32,23 @@ Our objective for this level is to log in to the game using SSH. To establish a 
 
 ![img1](/assets/images/bandit_overthewire/img1.png)
 
-
+In the home directory, check the contents of the README file, it should contain the SSH password for bandit1
 
 ![img2](/assets/images/bandit_overthewire/img2.png)
 
 
+#### Bandit Level 1
+
+After loging to level 1, we need the password for level 2 which is stored in a file called **-** located in the home directory. To be able to read a file with such name we need to provide either the current directory path **./-** or the absolute path to the file **/home/bandit1/-**, otherwise the **-** will be considered as an option for the **cat** command and we won't get anything.
+
+
+
+
+
 
 ![img3](/assets/images/bandit_overthewire/img3.png)
+
+
 ![img4](/assets/images/bandit_overthewire/img5.png)
 ![img6](/assets/images/bandit_overthewire/img4.png)
 ![img5](/assets/images/bandit_overthewire/img6.png)
