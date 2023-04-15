@@ -49,9 +49,19 @@ After loging to level 1, we need the password for level 2 which is stored in a f
 ![img3](/assets/images/bandit_overthewire/img3.png)
 
 
+#### Bandit Level 2
+
+Level 2 → Level 3 task is to find the password in a file which has spaces in it's name. To read the contents of such file we can use the **" \ "** after each space, or double **TAB** to autocomplete.
+
 ![img4](/assets/images/bandit_overthewire/img5.png)
-![img6](/assets/images/bandit_overthewire/img4.png)
+
+
+
 ![img5](/assets/images/bandit_overthewire/img6.png)
+
+
+
+![img6](/assets/images/bandit_overthewire/img4.png)
 ![img7](/assets/images/bandit_overthewire/img7.png)
 ![img8](/assets/images/bandit_overthewire/img8.png)
 ![img9](/assets/images/bandit_overthewire/img9.png)
