@@ -129,19 +129,92 @@ The find command will look as follows: **find / -user bandit7 -group bandit6 -si
 
 ### Bandit Level 6
 
+For level 7, the password is stored somewhere on the server and has all of the following properties:
+
+    owned by user bandit7
+    owned by group bandit6
+    33 bytes in size
+
+The find command will look as follows: **find / -user bandit7 -group bandit6 -size 33c 2>/dev/null**
+
+    Command: find - used to search for files and directories.
+    Starting point: / - the root directory, from where the search starts.
+    User: bandit7 - specifies the owner of the files to be searched for.
+    Group: bandit6 - specifies the group of the files to be searched for.
+    Size: 33c - specifies the size of the files to be searched for.
+    2>/dev/null redirects error messages to a black hole, i.e., discards them and prevents them from being displayed on the terminal.
+
+
+
+
+![img8](/assets/images/bandit_overthewire/img8.png)
+
+
+---------
+
+### Bandit Level 7
+
 
 The password for the next level is stored in the file data.txt next to the word **millionth**
 
-We can find it either using **cat** or **strings** + **grep**, but this is not the only way to do it, there are many other methods.
 
-
-
+We can find it either using **cat** or **strings** + **grep**. Note this is not the only way to do it, there are multiple other methods.
 
 ![img9](/assets/images/bandit_overthewire/img9.png)
 
------------
 
+
+
+-------------
+
+### Bandit Level 8
+
+
+We have the file data.txt which contains the next level password. That would be the only line of text occuring only once
+
+This is quite easy to solve, using the **sort** & **uniq** commands. **sort data.txt | uniq -u**
 
 ![img10](/assets/images/bandit_overthewire/img10.png)
 
+To break it down, the command performs the following operations:
+
+    Reads the contents of the file called "data.txt"
+    Sorts the contents of "data.txt" alphabetically.
+    The sorted output is then piped to the next command in the pipeline.
+    The next command is "uniq", which filters adjacent matching lines from the sorted output and only outputs the lines that appear exactly once.
+    The "-u" option in "uniq" stands for "unique" and ensures that only lines that appear exactly once are output.
+
+So, in summary, the command sorts the lines in "data.txt" alphabetically and filters out duplicate lines, only outputting lines that appear exactly once.
+
+------
+
+### Bandit Level 9
+
+Based on challenge description, the password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
+
+We will be using the **strings** & **grep** commands: **strings data.txt | grep ===**
+
+    "strings data.txt"  Prints all printable character sequences in the input
+    "grep ==="  Searches for and prints lines in the output that contain the string "==="
+
+So, the command essentially prints out any sequences of printable characters in "data.txt" and then filters and prints out only the lines that contain the string "===" from the output.
+
+![img11](/assets/images/bandit_overthewire/img11.png)
+
+--------
+
+### Bandit Level 10
+
+![img12](/assets/images/bandit_overthewire/img12.png)
+
+
+
+![img13](/assets/images/bandit_overthewire/img13.png)
+![img14](/assets/images/bandit_overthewire/img14.png)
+![img15](/assets/images/bandit_overthewire/img15.png)
+![img16](/assets/images/bandit_overthewire/img16.png)
+![img17](/assets/images/bandit_overthewire/img17.png)
+![img18](/assets/images/bandit_overthewire/img18.png)
+![img19](/assets/images/bandit_overthewire/img19.png)
+![img20](/assets/images/bandit_overthewire/img20.png)
 
