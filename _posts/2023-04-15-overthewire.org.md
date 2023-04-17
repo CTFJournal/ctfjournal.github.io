@@ -203,7 +203,7 @@ So, the command essentially prints out any sequences of printable characters in 
 
 --------
 
-### Bandit Level 10
+### Bandit Level 10  - work in progress...
 
 ![img12](/assets/images/bandit_overthewire/img12.png)
 
