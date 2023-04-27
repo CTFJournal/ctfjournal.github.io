@@ -73,12 +73,13 @@ I've logged in to **ftp** using the found credentials and we have some files the
 
 The content of the file ***"To_agentJ.txt"***
 
-Dear agent J,
+    Dear agent J,
 
-All these alien like photos are fake! Agent R stored the real picture inside your directory. Your login password is somehow stored in the fake picture. It shouldn't be a problem for you.
+    All these alien like photos are fake! Agent R stored the real picture inside your directory. 
+    Your login password is somehow stored in the fake picture. It houldn't be a problem for you.
 
-From,
-Agent C
+    From,
+    Agent C
          
 
 ![img9](/assets/images/agent-sudo/img9.png)
