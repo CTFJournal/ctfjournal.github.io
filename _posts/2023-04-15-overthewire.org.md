@@ -194,6 +194,7 @@ Based on challenge description, the password for the next level is stored in the
 
 We will be using the **strings** & **grep** commands: **strings data.txt | grep ===**
 
+
     "strings data.txt"  Prints all printable character sequences in the input
     "grep ==="  Searches for and prints lines in the output that contain the string "==="
 
