@@ -8,12 +8,15 @@ title: "Useful Commands"
 
 ## A list of most used commands & tools across the CTF cycle
 
------
+
+----
 
 ### Table of Contents
 
 * **[Scanning](#scanning)**
     * [Nmap](#nmap)
+    * [NetDiscover](#netdiscover)
+    * [PingSweep](#pingsweep)
     * [Gobuster](#gobuster)
     * [Wfuzz](#wfuzz)
     * [WpScan](#wpscan)
@@ -41,27 +44,37 @@ title: "Useful Commands"
     * [SMB](#smb)
     * [FTP](#ftp)
     * 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 ------------------------------
 
+### Scanning 
+
+-----------
+##### Nmap
+
+
+```bash
+nmap -sC -sV -p- $IP --open
+
+# -sV -> Version detection
+# -sC -> Execute default scripts
+# -A  -> OS detection and traceroute + the 2 above(sC,sV)
+```
+
+
+##### PingSweep
+
+```vim
+
+#!/bin/bash
+#script will scan subnet 10.1.1.0/24 - adjust apropriately.
+
+for ip in $(seq 1 254);do
+    ping -c 1 10.1.1.$ip | grep "bytes from" | cut -d" " -f4 | cut -d":" -f1 &
+done
+```
 
 ### References
 * Nmap. https://nmap.org/
