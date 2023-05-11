@@ -35,7 +35,7 @@ title: "Useful Commands"
     * [PowerUp](#powerup)
 
 * **[Cracking](#cracking)**
-    * [Hascat](#hashcat)
+    * [Hashcat](#hashcat)
     * [John](#john)
     * [Stegcracker](#stegcracker)
 
