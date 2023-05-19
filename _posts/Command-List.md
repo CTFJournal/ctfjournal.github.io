@@ -20,6 +20,7 @@ title: "Useful Commands"
     * [Gobuster](#gobuster)
     * [Wfuzz](#wfuzz)
     * [WpScan](#wpscan)
+    * [Zoom](#zoom)
     * [Nikto](#nikto)
 
 
