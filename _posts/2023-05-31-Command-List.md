@@ -62,7 +62,7 @@ export URL="http://10.0.0.1"
 ### Scanning 
 
 -----------
-##### Nmap
+#### Nmap
 
 
 ```bash
@@ -77,7 +77,7 @@ nmap --script=vuln $IP
 ```
 
 
-##### Netdiscover
+#### Netdiscover
 
 
 ```bash
@@ -89,7 +89,7 @@ netdiscover -r $IP/24
 
 ```
 
-##### PingSweep
+#### PingSweep
 
 ```vim
 
@@ -102,7 +102,7 @@ done
 ```
 
 
-##### Gobuster
+#### Gobuster
 
 ```bash
 gobuster dir -u $URL -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
@@ -113,21 +113,49 @@ gobuster dir -u $URL -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium
 # -x -> file extensions to look for (for ex: txt,php,html,xml)
 ```
 
-##### Wfuzz
+#### Wfuzz
 
 ```bash
-FUZZ Directories:
+#FUZZ Directories:
 wfuzz -c -z file,/usr/share/wordlists/Seclists/Discovery/Web-Content/raft-large-directories.txt --hc 404 "$URL"
 
-FUZZ FILES:
+#FUZZ FILES:
 wfuzz -c -z file,/usr/share/wordlists/Seclists/Discovery/Web-Content/raft-large-files.txt --hc 404 "$URL"
 |
 
 ```
 
+#### WPScan
 
+```bash
 
+#WPScan Brute Force:
+wpscan --url $URL --disable-tls-checks -U users -P /usr/share/wordlists/rockyou.txt
 
+#Aggressive Plugin Detection:
+wpscan --url $URL --enumerate p --plugins-detection aggressive
+
+```
+
+#### Zoom
+
+```bash
+#Zoom is a lightning-fast WordPress vulnerability scanner
+git clone https://github.com/gcxtx/zoom
+
+#Manual Mode - In manual mode you must specify a WordPress website to scan for vulnerabilities
+python zoom.py -u <wordpress website>
+
+#Automatic Mode - In automatic mode, Zoom will find subdomains and check those using WordPress for vulnerabilities.
+
+python zoom.py -u <website> --auto
+```
+
+#### Nikto
+
+```bash
+nikto -host $URL
+```
 ------------------
 
 
