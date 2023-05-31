@@ -115,7 +115,15 @@ gobuster dir -u $URL -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium
 
 ##### Wfuzz
 
+```bash
+FUZZ Directories:
+wfuzz -c -z file,/usr/share/wordlists/Seclists/Discovery/Web-Content/raft-large-directories.txt --hc 404 "$URL"
 
+FUZZ FILES:
+wfuzz -c -z file,/usr/share/wordlists/Seclists/Discovery/Web-Content/raft-large-files.txt --hc 404 "$URL"
+|
+
+```
 
 
 
