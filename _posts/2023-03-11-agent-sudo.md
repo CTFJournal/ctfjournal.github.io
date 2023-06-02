@@ -61,12 +61,16 @@ Tried with user-agent as **"R"** and we see some additional output. 1 Letter, 25
 
 ![img6](/assets/images/agent-sudo/img6.png)
 
+-------
+
+### Hash cracking and brute-force 
+
 First thing we would usually do, is to attempt ftb bruteforcing. For that i'll use **Hydra**, The passwod is found quickly using **rockyou** wordlist
 
 ![img7](/assets/images/agent-sudo/img7.png)
 
 
-I've logged in to **ftp** using the found credentials and we have some files there. I downloaded all of them to the local machine and looking 
+I've logged in to **ftp** using the found credentials and we have some files there. I downloaded all of them to the local machine.
 
 
 ![img8](/assets/images/agent-sudo/img8.png)
@@ -80,10 +84,30 @@ The content of the file ***"To_agentJ.txt"***
 
     From,
     Agent C
-         
+
+
+Verifying the image with **steghide** we find out it is password protected from extraction, which probably means there's something hidden inside it. I used **stegcracker** to find the password
 
 ![img9](/assets/images/agent-sudo/img9.png)
 
-
+Then we can extract the hidden content which is going to reveal user James and their password
 
 ![img10](/assets/images/agent-sudo/img10.png)
+
+Let's login via SSH as James. There we can find the user flag, along with an image for which we'll have to do a bit a revese image search to respond to the last question in this section.
+
+-----------
+
+
+### Privilege escalation 
+
+![img11](/assets/images/agent-sudo/img11.png)
+
+
+Looking at the above output: The sudo configuration allows the user "james" to run the "/bin/bash" command with the privileges of any user except for the root user. This restriction is denoted by the "!root" entry in the sudoers configuration. By explicitly specifying the allowed command ("/bin/bash") and the restriction on the target user ("!root"), it seems that the configuration aims to limit the commands that "james" can execute with elevated privileges, preventing potential misuse.
+
+The PrivEsc on this room is about CVE-2019-14287, a vulnerability that allows a user with sudo privileges to bypass intended restrictions and execute arbitrary commands as the target user, even if those commands were not explicitly allowed in the sudoers configuration file. This means that an attacker with limited privileges could escalate their privileges and gain unauthorized access to sensitive resources or execute malicious commands on the system.
+
+The vulnerability arises from an error in the sudo command's policy for user authentication. By using a specially crafted command sequence that includes specifying the user ID "-1" or "4294967295" (equivalent to "ALL" or "ANY"), an attacker can exploit this flaw and execute commands they shouldn't have permission for.
+
+-------------------
