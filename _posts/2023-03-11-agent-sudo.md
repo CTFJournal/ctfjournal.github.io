@@ -110,4 +110,7 @@ The PrivEsc on this room is about CVE-2019-14287, a vulnerability that allows a 
 
 The vulnerability arises from an error in the sudo command's policy for user authentication. By using a specially crafted command sequence that includes specifying the user ID "-1" or "4294967295" (equivalent to "ALL" or "ANY"), an attacker can exploit this flaw and execute commands they shouldn't have permission for.
 
+![img12](/assets/images/agent-sudo/img12.png)
+
+
 -------------------
