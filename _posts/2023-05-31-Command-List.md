@@ -43,8 +43,9 @@ title: "Useful Commands"
 * **[Extra](#extra)**
     * [Shells](#shells)
     * [SMB](#smb)
+    * [NFS](#nfs)
     * [FTP](#ftp)
-    * 
+    * [SCP](#scp)
 
 
 
@@ -162,7 +163,7 @@ nikto -host $URL
 
 #### SQLMap
 
-```bash
+```sh
 # sqlmap is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws.
 
 #To get a list of basic options and switches use:
@@ -176,6 +177,9 @@ Examples:
 #Burpsuite generated file - In burpsuite intercept tab, you can right click on the request and select "Copy to file" and save the request to a local file. Next you can point SQLMap to that file using the -r parameter:
 
 sqlmap -r request.req --dump --batch
+
+#Syntax for connecting to MySQL
+mysql -h [IP] -u [username] -p
 ```
 
 
@@ -219,10 +223,30 @@ Options can be:
 
 --------------
 ## Cracking
-------------
+----
 
 #### Hashcat
+```sh
+  Attack-Mode   Hash-Type   Command
+ ==============+==========+================================================================== 
+
+  Wordlist      | $P$   | hashcat -a 0 -m 400 example400.hash wordlist.txt 
+
+  Brute-Force   | MD5   | hashcat -a 3 -m 0 example0.hash ?a?a?a?a?a?a 
+
+  Combinator    | MD5   | hashcat -a 1 -m 0 example0.hash example.dict example.dict 
+
+ 
+
+```
+
 #### John
+```sh
+#Automatic cracking
+john --wordlist=[path to wordlist] [path to hash_file] 
+```
+
+
 #### Stegcracker
 
 --------
@@ -259,8 +283,49 @@ stty rows 38 columns 116
 
 #### SMB
 
+```sh
+
+#Access the SMB share: 
+smbclient //$IP/SHARE_NAME 
+
+#use:
+-U [name] : to specify the user 
+-p [port] : to specify the port 
+```
+#### NFS
+```sh
+#List the NFS shares 
+showmount -e $IP
+
+#Mounting NFS shares
+sudo mount -t nfs $IP:share /tmp/mount/ -nolock
+
+#mount -> Execute the mount command 
+#-t nfs -> Type of device to mount, then specifying that it's NFS 
+#$IP:share -> The IP Address of the NFS server, and the name of the share we wish to mount 
+#-nolock -> Specifies not to use NLM locking 
+
+```
 
 #### FTP
+on
+```sh
+ftp $IP
+```
+
+#### SCP
+
+```sh
+#Copy a file from our machine to a remote machine
+scp local_file.txt user@10.0.0.1:/home/user/transferred_file.txt
+
+#Copy a file from a remote computer that we're not logged into
+scp user@10.0.0.1:/home/user/remote_file.txt local_filename.txt
+
+
+
+```
+
 
 
 #### SUID Commands
