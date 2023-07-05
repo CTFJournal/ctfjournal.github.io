@@ -6,7 +6,7 @@ title: "Useful Commands"
 
 -----
 
-## A list of most used commands & tools across the CTF cycle
+## A list of the most used commands & tools across the CTF cycle
 
 
 ----
@@ -28,7 +28,7 @@ title: "Useful Commands"
 * **[Gaining Access](#gaining-access)**
     * [Metasploit](#metasploit)
     * [Sqlmap](#sqlmap)
-    * [Hydra](#hydra)
+  
 
 
 * **[Enumeration/PrivEsc](#enumeration/privesc)**
@@ -36,6 +36,7 @@ title: "Useful Commands"
     * [PowerUp](#powerup)
 
 * **[Cracking](#cracking)**
+    * [Hydra](#hydra)
     * [Hashcat](#hashcat)
     * [John](#john)
     * [Stegcracker](#stegcracker)
@@ -183,14 +184,6 @@ mysql -h [IP] -u [username] -p
 ```
 
 
-#### Hydra
-
-```bash
-  hydra -l user -P passlist.txt ftp://$IP
-  hydra -L userlist.txt -p defaultpw imap://$IP/PLAIN
-  hydra -l admin -p password ftp://$IP
-  hydra -L logins.txt -P pws.txt -M targets.txt ssh
-```
 
 
 
@@ -224,6 +217,15 @@ Options can be:
 --------------
 ## Cracking
 ----
+
+#### Hydra
+
+```bash
+  hydra -l user -P passlist.txt ftp://$IP
+  hydra -L userlist.txt -p defaultpw imap://$IP/PLAIN
+  hydra -l admin -p password ftp://$IP
+  hydra -L logins.txt -P pws.txt -M targets.txt ssh
+```
 
 #### Hashcat
 ```sh
