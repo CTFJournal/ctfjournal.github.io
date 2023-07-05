@@ -249,6 +249,19 @@ john --wordlist=[path to wordlist] [path to hash_file]
 
 #### Stegcracker
 
+```markdown
+#usage: 
+stegcracker <file> [<wordlist>]
+
+This is a steganography brute-force utility to uncover hidden data inside files. Accepted file types are: jpg, jpeg, bmp, wav, au
+
+StegCracker has been retired following the release of StegSeek, which will blast through the rockyou.txt wordlist within 1.9 second as opposed 
+to StegCracker which takes ~5 hours. StegSeek can be found at: https://github.com/RickdeJager/stegseek
+
+#usage:
+stegseek  <file> [<wordlist>]
+```
+
 --------
 
 ## Extra
@@ -308,7 +321,7 @@ sudo mount -t nfs $IP:share /tmp/mount/ -nolock
 ```
 
 #### FTP
-on
+
 ```sh
 ftp $IP
 ```
@@ -321,9 +334,6 @@ scp local_file.txt user@10.0.0.1:/home/user/transferred_file.txt
 
 #Copy a file from a remote computer that we're not logged into
 scp user@10.0.0.1:/home/user/remote_file.txt local_filename.txt
-
-
-
 ```
 
 
@@ -357,7 +367,6 @@ cat /etc/apache2/apache2.conf
 cat /etc/my.conf
 cat /etc/httpd/conf/httpd.conf
 cat /opt/lampp/etc/httpd.conf
-ls -aRl /etc/ | awk '$1 ~ /^.*r.*/'
 ```
 #### Cron jobs
 
