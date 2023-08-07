@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Snapped "Phish"-ing Line"
+title: "Snapped "Phish-ing Line"
 ---
 
 
