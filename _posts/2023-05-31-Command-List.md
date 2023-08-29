@@ -70,11 +70,17 @@ export URL="http://10.0.0.1"
 ```bash
 nmap -sC -sV -p- $IP --open
 nmap --script=vuln $IP
+nmap  --script smb-enum-users.nse $IP
+nmap --script smb-enum-groups.nse -p 445 $IP
+nmap --script smb-enum-shares.nse -p 445 $IP
+nmap -sV --script=http-enum -p 80 $IP
+nmap --script smb-enum-processes.nse --script-args smbusername=<username>, smbpass=<password> -p445 $IP
 
 # -sV -> Version detection
 # -sC -> Execute default scripts
 # -A  -> OS detection and traceroute + the 2 above(sC,sV)
 # -p- -> Scan all 65535 ports (the scan might take a great amount of time)
+# smb-enum-processes NSE script enumerates services on a Windows system, and it does so by using credentials of a user who has access to read the status of services that are running.
 
 ```
 
