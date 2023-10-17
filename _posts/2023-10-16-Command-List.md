@@ -34,6 +34,8 @@ title: "Useful Commands"
 * **[Enumeration/PrivEsc](#enumeration/privesc)**
     * [Enum4Linux](#enum4linux)
     * [PowerUp](#powerup)
+    * [WinPeas](#winpeas)
+    * [LinPeas](#linpeas)
 
 * **[Cracking](#cracking)**
     * [Hydra](#hydra)
