@@ -35,10 +35,19 @@ Image source: https://tryhackme.com/room/threatinteltools
 ---------------
 #### Abuse.ch
 
+This is a research project developed to identify and track malware and botnets through several operational platforms, such as:
+
+
+    Malware Bazaar:  Used for sharing malware samples.
+    Feodo Tracker:  Used to track botnet command and control (C2) infrastructure.
+    SSL Blacklist:  Used to collect and provide a blocklist for malicious SSL certificates and JA3/JA3s fingerprints.
+    URL Haus:  Used for sharing malware distribution sites.
+    Threat Fox:  Used for sharing indicators of compromise (IOCs).
+
 
 ##### The IOC 212.192.246.30:5555 is identified under which malware alias name on ThreatFox?
 
-To find the info in the database, use search syntax keyword **ioc:** folllowed by the **ip_address:port**. As we can see in teh screenshot the malware alias is "Katana"
+To find the info in the database, use search syntax keyword **ioc:** folllowed by the **ip_address:port**. As we can see in the screenshot the malware alias is "Katana"
 
 ![img2](/assets/images/threat_intel_tools/img2.png)
 
@@ -62,7 +71,7 @@ Search by IP.
 
 #### PhishTool 
 
-
+This is an email analysis tool. We ar going to use the community edition for completing the tasks under this section.
 
 
 ![img6](/assets/images/threat_intel_tools/img6.png)
