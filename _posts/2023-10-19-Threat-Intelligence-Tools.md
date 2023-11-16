@@ -73,10 +73,41 @@ Search by IP.
 
 This is an email analysis tool. We ar going to use the community edition for completing the tasks under this section.
 
+Once we sign up for an account and log in, we encounter an upload file screen within the Analysis tab. At this interface, we provide our email for analysis in the specified file formats.
 
 ![img6](/assets/images/threat_intel_tools/img6.png)
+
+Upon uploading, the email details are presented across various tabs:
+
+    Headers: Routing info, source/destination addresses, IP, DNS, timestamp.
+    Received Lines: Traversal details through SMTP servers.
+    X-Headers: Additional info added by recipient mailbox.
+    Security: SPF, DKIM, DMARC details.
+    Attachments: List of file attachments.
+    Message URLs: External URLs in the email.
+
+
+
+In this simulation, we assume the role of a SOC Analyst assigned to analyze a suspicious email - *Email1.eml*. located on the Desktop of the AttackBox
+
+
+
+##### What social media platform is the attacker trying to pose as in the email? Recipient and sender address?
+
+For the first 3 questions we get the response if oppening the email in Thunderbird
+
 ![img7](/assets/images/threat_intel_tools/img7.png)
+
+##### What is the Originating IP address? Defang the IP address.
+
+To find the source IP address we can click on "More" and select "View Source" in Thunderbird upper right side corner. 
+
 ![img8](/assets/images/threat_intel_tools/img8.png)
+
+Keep in mind, for answering correctly we need to Defang the IP - meaning to alter its format to make it non-functional while preserving its visual representation. This is commonly done for security purposes, especially when sharing information in a non-executable context. For example, an IP address like "192.168.1.1" might be defanged as "192[.]168[.]1[.]1" to prevent accidental clicks or interpretations by systems that could potentially interact with the IP. 
+
+
+
 ![img9](/assets/images/threat_intel_tools/img9.png)
 ![img10](/assets/images/threat_intel_tools/img10.png)
 ![img11](/assets/images/threat_intel_tools/img11.png)
