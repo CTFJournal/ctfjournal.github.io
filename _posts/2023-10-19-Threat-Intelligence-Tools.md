@@ -111,3 +111,18 @@ Keep in mind, for answering correctly we need to Defang the IP - meaning to alte
 ![img9](/assets/images/threat_intel_tools/img9.png)
 ![img10](/assets/images/threat_intel_tools/img10.png)
 ![img11](/assets/images/threat_intel_tools/img11.png)
+
+
+
+
+
+
+
+During high school i would rate my performance level for mathematics and native language to have been somewhere somewhere in the average range, if we are to put it into a more generic statement.
+
+
+I have graduated university in 2011 and i cannot say i have used Linux a lot at that time. I have started interacting with it more after i have graduated, especially in the recent past few years(5-6). Initially the impression was of a quite difficult OS, however the more i learned and used it, the more i started to like it. I am still considering Linux a quite challenging Operating System, yet that is only a motivation to keep learning it's complexities. With the great support from Linux/AskUbuntu community, mastering the OS becomes an easier goal to achieve.  For almost a year now i am using Ubuntu as my main OS, keeping windows as the 2nd boot option(usually needed for attending certification exams). Besides the desktop experience, the CLI opens endless possibilities and i enjoy practicing it. I am passionate about cybersecurity and all my activities are done in Linux, either Kali or Ubuntu, as a result i get to use the Terminal for a significat amount of time.
+
+I am aware of Landscape and Kubernetes however i haven't worked with any of them.
+
+https://www.linkedin.com/in/sergiu-onuta/
