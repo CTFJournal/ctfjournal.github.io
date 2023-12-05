@@ -6,7 +6,7 @@ title: "Useful Commands"
 
 -----
 
-## A list of the most used commands & tools across the CTF cycle
+## The most used commands & tools across the CTF cycle
 
 
 ----
